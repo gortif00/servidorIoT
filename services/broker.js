@@ -5,14 +5,17 @@ const { WebSocketServer, createWebSocketStream } = require('ws');
 const { dispatch } = require('./mqtt-handlers');
 
 async function startBroker() {
-    const MQTT_PORT = process.env.MQTT_PORT || 1884;
-    const WS_PORT   = process.env.MQTT_WS_PORT || 8888;
+    const MQTT_PORT = Number.parseInt(process.env.MQTT_PORT || '1883', 10);
+    const WS_PORT   = Number.parseInt(process.env.MQTT_WS_PORT || '8888', 10);
+
+    const MQTT_USERNAME = process.env.MQTT_USERNAME || 'datosiot';
+    const MQTT_PASSWORD = process.env.MQTT_PASSWORD || 'datosiot@2026';
 
     const aedes = await Aedes.createBroker();
 
     aedes.authenticate = (client, username, password, callback) => {
-        const expectedUsername = 'datos';
-        const expectedPassword = 'datos@2026';
+        const expectedUsername = MQTT_USERNAME;
+        const expectedPassword = MQTT_PASSWORD;
         
         const passedPassword = password ? password.toString() : null;
         

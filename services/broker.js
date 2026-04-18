@@ -5,7 +5,7 @@ const { WebSocketServer, createWebSocketStream } = require('ws');
 const { dispatch } = require('./mqtt-handlers');
 
 async function startBroker() {
-    const MQTT_PORT = process.env.MQTT_PORT || 1883;
+    const MQTT_PORT = process.env.MQTT_PORT || 1884;
     const WS_PORT   = process.env.MQTT_WS_PORT || 8888;
 
     const aedes = await Aedes.createBroker();

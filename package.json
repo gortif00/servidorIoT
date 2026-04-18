@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "node server.js",
-    "seed": "node scripts/seed.js"
+    "seed": "node scripts/seed.js",
+    "sync-indexes": "node scripts/sync-indexes.js"
   },
   "dependencies": {
     "aedes": "^1.0.0",
